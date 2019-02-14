@@ -63,10 +63,10 @@ data RPath a where
 {- That is, there are two ways/rules to build an Right-Path `RPath` 
 
       -------------- [RRefl]
-	      RPath r x x
+	RPath r x x
 
 
-	      RPath r x y     r y z 
+	RPath r x y     r y z 
       ------------------------- [RStep]
         RPath r x z 
 
@@ -78,13 +78,13 @@ data RPath a where
 
 {-@ lem_Step :: r:_ -> x:_ -> y:{ r x y } -> Prop (Path r x y) @-}
 lem_Step :: Rel a -> a -> a -> Path a 
-lem_Step r x y = undefined 
+lem_Step r x y = impossible "TBD" 
 
 -- | Prove that a single link makes a Right-Path --------------------------------------------------
 
 {-@ lem_RStep :: r:_ -> x:_ -> y:{ r x y } -> Prop (RPath r x y) @-}
 lem_RStep :: Rel a -> a -> a -> RPath a 
-lem_RStep r x y = undefined 
+lem_RStep r x y = impossible "TBD" 
 
 -- | Prove that right-paths are transitive  --------------------------------------------------
 
@@ -94,17 +94,17 @@ lem_RStep r x y = undefined
       -> Prop (RPath r x z)
   @-}
 lem_RPath_trans :: Rel a -> a -> a -> a -> RPath a -> RPath a -> RPath a
-lem_RPath_trans r x y z rp_x_y rp_y_z = undefined 
+lem_RPath_trans r x y z rp_x_y rp_y_z = impossible "TBD" 
 
 -- | Prove that `Path` and `RPath` are "equivalent" ------------------------------------------
 
 {-@ lem_path_rpath :: r:_ -> x:_ -> y:_ -> Prop (Path r x y) -> Prop (RPath r x y) @-}
 lem_path_rpath :: Rel a -> a -> a -> Path a -> RPath a 
-lem_path_rpath r x y p_x_y = undefined 
+lem_path_rpath r x y p_x_y = impossible "TBD" 
 
 {-@ lem_rpath_path :: r:_ -> x:_ -> y:_ -> Prop (RPath r x y) -> Prop (Path r x y) @-} 
 lem_rpath_path :: Rel a -> a -> a -> RPath a -> Path a 
-lem_rpath_path r x y rp_x_y = undefined 
+lem_rpath_path r x y rp_x_y = impossible "TBD" 
 
 -------------------------------------------------------------------------------
 -- | Q2 : Equivalence of evaluators
@@ -122,8 +122,10 @@ data LvRel where
   LvRelL :: State -> Vname -> LExp -> Val -> LExp -> Val -> LvRel -> LvRel -> LvRel 
 
 {-@ data LvRel where
-      LvRelN :: s:_ -> n:_ -> Prop (LvRel s (LN n) n) 
-    | LvRelV :: s:_ -> x:_ -> Prop (LvRel s (LV x) (S.get s x)) 
+      LvRelN :: s:_ -> n:_ 
+	     -> Prop (LvRel s (LN n) n) 
+    | LvRelV :: s:_ -> x:_ 
+	     -> Prop (LvRel s (LV x) (S.get s x)) 
     | LvRelP :: s:_ -> e1:_ -> n1:_ -> e2:_ -> n2:_ 
              -> Prop (LvRel s e1 n1) 
              -> Prop (LvRel s e2 n2)
@@ -160,8 +162,8 @@ data LvRel where
 
 {-@ lem_LvRel_lval :: s:_ -> e:_ -> n:_ -> Prop (LvRel s e n) -> { lval e s == n } @-}
 lem_LvRel_lval :: State -> LExp -> Val -> LvRel -> Proof 
-lem_LvRel_lval s e n lv_s_e_n = undefined 
+lem_LvRel_lval s e n lv_s_e_n = impossible "TBD" 
 
 {-@ lem_lval_LvRel :: s:_ -> e:_ -> Prop (LvRel s e (lval e s)) @-}
 lem_lval_LvRel :: State -> LExp -> LvRel 
-lem_lval_LvRel s e = undefined 
+lem_lval_LvRel s e = impossible "TBD" 
