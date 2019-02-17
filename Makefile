@@ -3,8 +3,8 @@ ORG=ucsd-cse230-wi19
 ASGN=hw4
 ######################################################
 
-hw2: deps src/Hw4.hs 
-	stack exec -- liquid -i src src/Hw3.hs 
+hw: deps src/Hw4.hs 
+	stack exec -- liquid -i src src/Hw4.hs 
 
 deps: src/ProofCombinators.hs src/State.hs
 	stack exec -- liquid -i src src/ProofCombinators.hs
