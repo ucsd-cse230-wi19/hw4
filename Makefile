@@ -11,6 +11,9 @@ deps: src/ProofCombinators.hs src/State.hs
 	stack exec -- liquid -i src src/State.hs 
 	stack exec -- liquid -i src src/Expressions.hs 
 
+clean: 
+	rm -rf src/.liquid/*
+
 tags:
 	hasktags -x -c src/
 
