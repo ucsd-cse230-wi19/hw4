@@ -110,11 +110,9 @@ lem_rpath_path r x y rp_x_y = impossible "TBD"
 -- | Q2 : Equivalence of evaluators
 -------------------------------------------------------------------------------
 
--- | The Prop declaring the AVal predicate 
 data LvRelP where
   LvRel :: State -> LExp -> Val -> LvRelP 
 
--- | The Predicate implementing the Palindrom predicate 
 data LvRel where
   LvRelN :: State -> Val   -> LvRel 
   LvRelV :: State -> Vname -> LvRel 
